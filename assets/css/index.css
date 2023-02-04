@@ -1,5 +1,9 @@
-.SearchBtn{
-    width: 250px;
-    margin-top: 10px;
+.SearchBtn {
+  width: 250px;
+  margin-top: 10px;
+}
 
-};
+.weather-header {
+  background-color: #2a2a72;
+  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%) !important;
+}
