@@ -23,7 +23,7 @@ $("#search-button").click(function (event) {
     "&cnt=10&units=imperial&APPID=" +
     apiKey;
 
-  //  call to retrieve current weather information
+  //  call to retrieve user's selected city current weather information
   $.ajax({
     url: queryUrl1,
     method: "GET",
@@ -32,19 +32,24 @@ $("#search-button").click(function (event) {
 
   $("#city").text(response.name);
   $("#date").text("(" + moment().format("l") + ")")
-
-
+  $("#temperature").text(response.main.temp)
+  $("#humidity").text(response.main.humidity)
+  $("#wind").text(response.wind.speed)
   
+
 
   });
 
 
 });
 
-// let queryUrl2 =
-//   "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&appid=ad466c2bde80cc851c862d4fa5cea60c";
 
 // call to retrieve 5days forecast
+
+// let queryUrl2 =
+//   "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&cnt=5&appid=ad466c2bde80cc851c862d4fa5cea60c";
+
+// console.log(queryUrl2);
 
 // $.ajax({
 //   url: queryUrl2,
