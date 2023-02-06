@@ -16,14 +16,14 @@
     <title>Weather Dashboard</title>
   </head>
 
-  <body>
+  <body >
     <header
       class="container-fluid text-center text-white bg-dark p-2 weather-header"
     >
       <h1>Weather Dashboard</h1>
     </header>
 
-    <div class="container d-flex">
+    <div class="container d-flex ">
      
       <!-- left side -->
       <!-- search input and search Btn -->
@@ -32,6 +32,7 @@
         <form id="search-form" class="form">
           <div class="form-inline form-group">
             <div class="input-group flex-column">
+              <!-- city search input -->
               <input
                 class="form-input weather-search rounded-lg"
                 type="text"
@@ -68,7 +69,7 @@
             <img id="weather-icon" />
           </div>
           <p class="pt-1 pl-2">
-            Temperature: <span id="temperature"></span> &deg;F
+            Temperature: <span id="temperature"></span> &deg;C
           </p>
           <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
           <p class="pl-2">Wind Speed: <span id="wind"></span> MPH</p>
