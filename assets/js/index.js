@@ -9,9 +9,6 @@ let dateEl = $("#date");
 let iconEl = $("#weather-icon");
 let apiKey = "ad466c2bde80cc851c862d4fa5cea60c";
 
-// let cardDateEl = moment().format();
-// $("#date").text(cardDateEl);
-
 $("#search-button").click(function (event) {
   event.preventDefault();
 
@@ -28,7 +25,6 @@ $("#search-button").click(function (event) {
     url: queryUrl1,
     method: "GET",
   }).then(function (response) {
-    
     $("#city").text(response.name);
     $("#date").text("(" + moment().format("l") + ")");
 
@@ -41,41 +37,37 @@ $("#search-button").click(function (event) {
 
     //  used inputField variable to set the content of the dynamically created button
     historySearchBtn.text(inputField);
-    historySearchBtn.attr("data-name", )
-    historySearchBtn.addClass("SearchBtn rounded-lg ")
+    historySearchBtn.attr("data-name");
+    historySearchBtn.addClass("SearchBtn rounded-lg ");
     $("#history").append(historySearchBtn);
-
   });
 
   // viewSearch()
 });
 
-function viewSearch(){
+function viewSearch() {
   let search = $(this).attr("data-name");
-  let queryURl = "http://api.openweathermap.org/data/2.5/weather?q=" + search + "&APPID=" + apiKey;
-  
+  let queryURl =
+    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    search +
+    "&APPID=" +
+    apiKey;
+
   $.ajax({
     url: queryURl,
     method: "GET",
-
-  }).then(function (response) {
-
-   
-  })
-
+  }).then(function (response) {});
 }
-$(document).on('click','.SearchBtn' ,viewSearch)
-
-
+$(document).on("click", ".SearchBtn", viewSearch);
 
 // call to retrieve 5days forecast
 
-let queryUrl2 =
-  "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&cnt=5&appid=ad466c2bde80cc851c862d4fa5cea60c";
+// let queryUrl2 =
+//   "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&cnt=5&appid=ad466c2bde80cc851c862d4fa5cea60c";
 
-console.log(queryUrl2);
+// console.log(queryUrl2);
 
-$.ajax({
-  url: queryUrl2,
-  method: "GET",
-});
+// $.ajax({
+//   url: queryUrl2,
+//   method: "GET",
+// });
