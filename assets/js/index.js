@@ -7,6 +7,7 @@ let tempEl = $("#temperature");
 let cityEl = $("#city");
 let dateEl = $("#date");
 let iconEl = $("#weather-icon");
+let apiKey = "ad466c2bde80cc851c862d4fa5cea60c";
 
 // let cardDateEl = moment().format();
 // $("#date").text(cardDateEl);
@@ -16,7 +17,6 @@ $("#search-button").click(function (event) {
 
   // grabbed the text from the input box
   let inputField = $("#search-input").val();
-  let apiKey = "ad466c2bde80cc851c862d4fa5cea60c";
   let queryUrl1 =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     inputField +
@@ -28,8 +28,7 @@ $("#search-button").click(function (event) {
     url: queryUrl1,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
-
+    
     $("#city").text(response.name);
     $("#date").text("(" + moment().format("l") + ")");
 
@@ -38,42 +37,45 @@ $("#search-button").click(function (event) {
     $("#temperature").text(tempC.toFixed());
     $("#humidity").text(response.main.humidity);
     $("#wind").text(response.wind.speed);
+    let historySearchBtn = $("<button>");
+
+    //  used inputField variable to set the content of the dynamically created button
+    historySearchBtn.text(inputField);
+    historySearchBtn.attr("data-name", )
+    historySearchBtn.addClass("SearchBtn rounded-lg ")
+    $("#history").append(historySearchBtn);
+
   });
 
-
-historySearch();
-
-
+  // viewSearch()
 });
 
+function viewSearch(){
+  let search = $(this).attr("data-name");
+  let queryURl = "http://api.openweathermap.org/data/2.5/weather?q=" + search + "&APPID=" + apiKey;
+  
+  $.ajax({
+    url: queryURl,
+    method: "GET",
 
-function historySearch() {
-  let history = [""];
+  }).then(function (response) {
 
-  for (let i = 0; i < history.length; i++) {
-     let historySearchBtn = $("<button>");
-     
-     historySearchBtn.text(history[i]);
-     $("#history").append(historySearchBtn)
-     let inputField = $("#search-input").val().trim();
-     historySearchBtn.push(inputField)
-     console.log(history);
-  }
-
-
+   
+  })
 
 }
+$(document).on('click','.SearchBtn' ,viewSearch)
 
 
 
 // call to retrieve 5days forecast
 
-// let queryUrl2 =
-//   "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&cnt=5&appid=ad466c2bde80cc851c862d4fa5cea60c";
+let queryUrl2 =
+  "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&cnt=5&appid=ad466c2bde80cc851c862d4fa5cea60c";
 
-// console.log(queryUrl2);
+console.log(queryUrl2);
 
-// $.ajax({
-//   url: queryUrl2,
-//   method: "GET",
-// });
+$.ajax({
+  url: queryUrl2,
+  method: "GET",
+});
