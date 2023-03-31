@@ -1,85 +1,69 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./assets/css/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <title>Weather Dashboard</title>
-  </head>
 
-  <body>
-    <header
-      class="container-fluid text-center text-white bg-dark p-2 weather-header"
-    >
-      <h1>Weather Dashboard</h1>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./assets/css/index.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Weather Dashboard</title>
+</head>
 
-    <div class="container d-flex">
-      <!-- left side -->
-      <!-- search input and search Btn -->
-      <aside class="col-lg-3 pb-3">
-        <h2 id="form-heading" class="mt-1 h2 form-label">Search for a City:</h2>
-        <form id="search-form" class="form">
-          <div class="form-inline form-group">
-            <!-- city search input -->
-            <div class="input-group flex-column">
-              <input
-                class="form-input weather-search rounded-lg"
-                type="text"
-                id="search-input"
-                placeholder="Nigeria"
-              />
-              <div class="input-group-append">
-                <button
-                  type="submit"
-                  class="btn search-button btn-primary rounded-lg SearchBtn"
-                  id="search-button"
-                  >
-                  Search
-                </button>
-              </div>
+<body>
+  <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <div class="container d-flex">
+    <!-- left side -->
+    <!-- search input and search Btn -->
+    <aside class="col-lg-3 pb-3">
+      <h2 id="form-heading" class="mt-1 h2 form-label">Search for a City:</h2>
+      <form id="search-form" class="form">
+        <div class="form-inline form-group">
+          <!-- city search input -->
+          <div class="input-group flex-column">
+            <input class="form-input weather-search rounded-lg" type="text" id="search-input" placeholder="Nigeria" />
+            <div class="input-group-append">
+              <button type="submit" class="btn search-button btn-primary rounded-lg SearchBtn" id="search-button">
+                Search
+              </button>
             </div>
           </div>
-        </form>
-
-        <!-- history -->
-        <div class="list-group" id="history">
-          
         </div>
-      </aside>
+      </form>
 
-      <!-- right side -->
-      <!-- search result (City) and five day Forecast -->
-      <div class="col-sm-12 col-md-9 order-md-2">
-        <!-- current weather card-->
-        <div class="col-12 card currentWeather p-0">
-          <div class="d-flex cityName">
-            <h2 id="city"></h2>
-            <h3 id="date"></h3>
-            <img id="weather-icon" />
-          </div>
-          <p class="pt-1 pl-2">
-            Temperature: <span id="temperature"></span> &deg;C
-          </p>
-          <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
-          <p class="pl-2">Wind Speed: <span id="wind"></span> MPH</p>
+      <!-- history -->
+      <div class="list-group" id="history">
+
+      </div>
+    </aside>
+
+    <!-- right side -->
+    <!-- search result (City) and five day Forecast -->
+    <div class="col-sm-12 col-md-9 order-md-2">
+      <!-- current weather card-->
+      <div class="col-12 card currentWeather p-0">
+        <div class="d-flex cityName">
+          <h2 id="city"></h2>
+          <h3 id="date"></h3>
+          <img id="weather-icon" />
         </div>
+        <p class="pt-1 pl-2">
+          Temperature: <span id="temperature"></span> &deg;C
+        </p>
+        <p class="pl-2">Humidity: <span id="humidity"></span>%</p>
+        <p class="pl-2">Wind Speed: <span id="wind"></span> KM/H</p>
+      </div>
 
-        <!-- 5 days forecast cards -->
-        <div>
-          <div class="col-12 fiveDay">
-            <h2>5 Day Forecast</h2>
-            <!-- days forecast card -->
-           <div class="row">
+      <!-- 5 days forecast cards -->
+      <div>
+        <div class="col-12 fiveDay">
+          <h2>5 Day Forecast</h2>
+          <!-- days forecast card -->
+          <div class="row">
             <div class="col-sm-10 col-md-4 offset-lg-1 col-lg-2 p-1">
               <div class="card day-0 m-0 text-center">
                 <div class="card-body p-1">
@@ -150,20 +134,21 @@
                 </div>
               </div>
             </div>
-           </div>
-
-        
           </div>
 
-          
-        </div>
-      </div>     
-    </div>
 
-    <!-- Moment.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./assets/js/index.js"></script>
-  </body>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+</body>
+
 </html>

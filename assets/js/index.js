@@ -11,13 +11,15 @@ let apiKey = "ad466c2bde80cc851c862d4fa5cea60c";
 
 $("#search-button").click(function (event) {
   event.preventDefault();
+  event.stopPropagation();
 
   // grabbed the text from the input box
-  let inputField = $("#search-input").val();
+  let inputField = $("#search-input")[0].value;
+  // console.log(inputField);
   let queryUrl1 =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     inputField +
-    "&cnt=10&units=imperial&APPID=" +
+    "&cnt=10&units=metric&APPID=" +
     apiKey;
 
   //  call to retrieve user's selected city current weather information
@@ -25,49 +27,81 @@ $("#search-button").click(function (event) {
     url: queryUrl1,
     method: "GET",
   }).then(function (response) {
-    $("#city").text(response.name);
-    $("#date").text("(" + moment().format("l") + ")");
-
-    // temperature conversion into Celsius
-    let tempC = response.main.temp - 32 / 1.8;
-    $("#temperature").text(tempC.toFixed());
-    $("#humidity").text(response.main.humidity);
-    $("#wind").text(response.wind.speed);
+    displayWeather(response);
+    forecast(response.coord);
     let historySearchBtn = $("<button>");
 
     //  used inputField variable to set the content of the dynamically created button
     historySearchBtn.text(inputField);
-    historySearchBtn.attr("data-name");
+    historySearchBtn.attr("data-name", inputField);
     historySearchBtn.addClass("SearchBtn rounded-lg ");
+    historySearchBtn.on("click", viewSearch);
+    // historySearchBtn.on("click", () => console.log("hi"));
     $("#history").append(historySearchBtn);
   });
-
-  // viewSearch()
 });
+
+function displayWeather(response) {
+  $("#city").text(response.name);
+  $("#date").text("(" + moment().format("l") + ")");
+  console.log(response);
+  // temperature conversion into Celsius
+  let tempC = response.main.temp;
+  $("#temperature").text(tempC.toFixed(2));
+  $("#humidity").text(response.main.humidity);
+  $("#wind").text(response.wind.speed);
+}
 
 function viewSearch() {
   let search = $(this).attr("data-name");
+  console.log(search);
   let queryURl =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     search +
-    "&APPID=" +
+    "&units=metric&APPID=" +
     apiKey;
 
   $.ajax({
     url: queryURl,
     method: "GET",
-  }).then(function (response) {});
+  }).then(function (response) {
+    displayWeather(response);
+    forecast(response.coord);
+  });
 }
-$(document).on("click", ".SearchBtn", viewSearch);
 
 // call to retrieve 5days forecast
 
-// let queryUrl2 =
-//   "http://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&cnt=5&appid=ad466c2bde80cc851c862d4fa5cea60c";
+function forecast(params) {
+  const { lat, lon } = params;
+  let queryUrl2 =
+    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&appid=" +
+    apiKey +
+    "&units=metric";
 
-// console.log(queryUrl2);
-
-// $.ajax({
-//   url: queryUrl2,
-//   method: "GET",
-// });
+  $.ajax({
+    url: queryUrl2,
+    method: "GET",
+  }).then(function (response) {
+    let forecast = response.list.filter((item) =>
+      item.dt_txt.includes("12:00")
+    );
+    console.log(forecast);
+    const temp = $(".fiveDay-temp");
+    console.log(temp);
+    const humidity = $(".fiveDay-humid");
+    forecast.forEach((day, index) => {
+      // const tempValue = temp.get(index);
+      // console.log(tempValue);
+      temp.get(index).textContent = day.main.temp;
+      // const humidityValue = humidity.get(index);
+      // console.log(humidityValue);
+      humidity.get(index).textContent = day.main.humidity;
+      // humidity.get(index).textContent = day.main.humidity;
+    });
+  });
+}
