@@ -30,7 +30,6 @@ body {
   background-position: center;
   height: 100%;
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -39,4 +38,26 @@ body {
 #search-button:hover {
   background-color: rgba(87, 186, 1, 0.722) !important;
   color: rgb(255, 255, 255) !important;
+}
+.cardStyle {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: -4px -2px 28px -4px rgba(0, 0, 0, 0.94);
+  -webkit-box-shadow: -4px -2px 28px -4px rgba(0, 0, 0, 0.94);
+  -moz-box-shadow: -4px -2px 28px -4px rgba(0, 0, 0, 0.94);
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* .bug {
+  border: 1px solid rgb(255, 0, 0);
+} */
+
+.forecastDiv {
+  margin-left: 2px !important;
 }
