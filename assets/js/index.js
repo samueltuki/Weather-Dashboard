@@ -70,7 +70,7 @@ function viewSearch() {
   });
 }
 
-// call to retrieve 5days forecast
+// function call to retrieve 5days forecast
 
 function forecast(params) {
   const { lat, lon } = params;
