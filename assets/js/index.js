@@ -11,7 +11,7 @@ let apiKey = "ad466c2bde80cc851c862d4fa5cea60c";
 
 $("#search-button").click(function (event) {
   event.preventDefault();
-  event.stopPropagation();
+  // event.stopPropagation();
 
   // grabbed the text from the input box
   let inputField = $("#search-input")[0].value;
@@ -92,7 +92,7 @@ function forecast(params) {
     );
     console.log(forecast);
     const temp = $(".fiveDay-temp");
-    console.log(temp);
+    // console.log(temp);
     const humidity = $(".fiveDay-humid");
     forecast.forEach((day, index) => {
       // const tempValue = temp.get(index);

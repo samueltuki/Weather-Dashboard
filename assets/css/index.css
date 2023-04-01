@@ -4,6 +4,11 @@
 }
 
 .weather-header {
-  background-color: #2a2a72;
-  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%) !important;
+  /* background-color: #340909 !important; */
+  background-image: linear-gradient(315deg, #afafaf 0%, #5a5a5a 74%) !important;
+}
+
+body{
+
+background-image: src="assets/images/Background.jpg";
 }
