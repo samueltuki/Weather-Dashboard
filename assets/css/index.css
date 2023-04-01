@@ -1,14 +1,39 @@
 .SearchBtn {
   width: 250px;
   margin-top: 10px;
+color: rgba(67, 33, 201, 0.278)!important;
+  background-color: white!important;
+  border: 1px solid rgba(67, 33, 201, 0.278)!important;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 10px;
 }
+
 
 .weather-header {
-  /* background-color: #340909 !important; */
-  background-image: linear-gradient(315deg, #afafaf 0%, #5a5a5a 74%) !important;
-}
+  font-size: .5rem;
+ background-color: rgba(67, 33, 201, 0.278);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+ }
+/* add image to the body */
+body {
+  background-image: url("../img/colin-lloyd-unsplash.jpg");
+  object-fit: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+};
 
-body{
-
-background-image: src="assets/images/Background.jpg";
-}

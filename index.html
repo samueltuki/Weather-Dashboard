@@ -12,11 +12,11 @@
 </head>
 
 <body>
-  <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
-    <h1>Weather Dashboard</h1>
+  <header class="headerStyle container-fluid text-center text-white  p-2 weather-header">
+    <h1>Whatever Weather</h1>
   </header>
 
-  <div class="row container d-flex">
+  <div class="row  container d-flex">
     <!-- left side -->
     <!-- search input and search Btn -->
     <aside class="col-lg-3 pb-3">
@@ -27,7 +27,7 @@
           <div class="input-group flex-column">
             <input class="form-input weather-search rounded-lg" type="text" id="search-input" placeholder="Nigeria" />
             <div class="input-group-append">
-              <button type="submit" class="btn search-button btn-primary rounded-lg SearchBtn" id="search-button">
+              <button type="submit" class="btn  btn-primary rounded-lg SearchBtn" id="search-button">
                 Search
               </button>
             </div>
@@ -45,7 +45,7 @@
     <!-- search result (City) and five day Forecast -->
     <div class="col-sm-12 col-md-9 order-md-2">
       <!-- current weather card-->
-      <div class="col-12 card currentWeather p-0">
+      <div class="col-12  card currentWeather p-0">
         <div class="d-flex cityName">
           <h2 id="city"></h2>
           <h3 id="date"></h3>
@@ -64,7 +64,7 @@
           <h2>5 Day Forecast</h2>
           <!-- days forecast card -->
           <div class="row">
-            <div class=" forecast-card col-sm-10 col-md-4 offset-lg-1 col-lg-2 p-1">
+            <div class=" col-sm-10 col-md-4 offset-lg-1 col-lg-2 p-1">
               <div class="card day-0 m-0 text-center">
                 <div class="card-body p-1">
                   <p class="card-title">Day 1</p>
@@ -78,6 +78,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-sm-10 col-md-4 offset-lg-1 col-lg-2 p-1">
               <div class="card day-0 m-0 text-center">
                 <div class="card-body p-1">
