@@ -45,11 +45,14 @@ function displayWeather(response) {
   $("#city").text(response.name);
   $("#date").text("(" + moment().format("l") + ")");
   console.log(response);
-  // temperature conversion into Celsius
+  let  icon = response.weather[0].icon;
   let tempC = response.main.temp;
   $("#temperature").text(tempC.toFixed(2));
   $("#humidity").text(response.main.humidity);
   $("#wind").text(response.wind.speed);
+  $("#weather-icon").attr("src", "http://openweathermap.org/img/w/" + icon + ".png");
+
+  console.log(icon);
 }
 
 function viewSearch() {
@@ -90,7 +93,7 @@ function forecast(params) {
     let forecast = response.list.filter((item) =>
       item.dt_txt.includes("12:00")
     );
-    console.log(forecast);
+    // console.log(forecast);
     const temp = $(".fiveDay-temp");
     // console.log(temp);
     const humidity = $(".fiveDay-humid");
