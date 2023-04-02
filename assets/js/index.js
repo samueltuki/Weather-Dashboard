@@ -17,7 +17,7 @@ $("#search-button").click(function (event) {
   let inputField = $("#search-input")[0].value;
   // console.log(inputField);
   let queryUrl1 =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     inputField +
     "&cnt=10&units=metric&APPID=" +
     apiKey;
@@ -52,7 +52,7 @@ function displayWeather(response) {
   $("#wind").text(response.wind.speed);
   $("#weather-icon").attr(
     "src",
-    "http://openweathermap.org/img/w/" + icon + ".png"
+    "https://openweathermap.org/img/w/" + icon + ".png"
   );
 
   // console.log(icon);
@@ -62,7 +62,7 @@ function viewSearch() {
   let search = $(this).attr("data-name");
   // console.log(search);
   let queryURl =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     search +
     "&units=metric&APPID=" +
     apiKey;
@@ -81,7 +81,7 @@ function viewSearch() {
 function forecast(params) {
   const { lat, lon } = params;
   let queryUrl2 =
-    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
     "&lon=" +
     lon +
@@ -101,11 +101,12 @@ function forecast(params) {
     const temp = $(".fiveDay-temp");
     const humidity = $(".fiveDay-humid");
     forecast.forEach((day, index) => {
+      // dynamically displays on the cards
       fiveDayImg
         .eq(index)
         .attr(
           "src",
-          "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png"
+          "https://openweathermap.org/img/w/" + day.weather[0].icon + ".png"
         );
       const dateText = new Date(day.dt_txt).toLocaleDateString();
       date.eq(index).text(dateText);
