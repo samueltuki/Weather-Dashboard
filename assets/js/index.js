@@ -44,20 +44,23 @@ $("#search-button").click(function (event) {
 function displayWeather(response) {
   $("#city").text(response.name);
   $("#date").text("(" + moment().format("l") + ")");
-  console.log(response);
-  let  icon = response.weather[0].icon;
+  // console.log(response);
+  let icon = response.weather[0].icon;
   let tempC = response.main.temp;
   $("#temperature").text(tempC.toFixed(2));
   $("#humidity").text(response.main.humidity);
   $("#wind").text(response.wind.speed);
-  $("#weather-icon").attr("src", "http://openweathermap.org/img/w/" + icon + ".png");
+  $("#weather-icon").attr(
+    "src",
+    "http://openweathermap.org/img/w/" + icon + ".png"
+  );
 
-  console.log(icon);
+  // console.log(icon);
 }
 
 function viewSearch() {
   let search = $(this).attr("data-name");
-  console.log(search);
+  // console.log(search);
   let queryURl =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     search +
@@ -93,18 +96,22 @@ function forecast(params) {
     let forecast = response.list.filter((item) =>
       item.dt_txt.includes("12:00")
     );
-    // console.log(forecast);
+    const fiveDayImg = $(".fiveDay-img");
+    const date = $(".fiveDay-date");
     const temp = $(".fiveDay-temp");
-    // console.log(temp);
     const humidity = $(".fiveDay-humid");
     forecast.forEach((day, index) => {
-      // const tempValue = temp.get(index);
-      // console.log(tempValue);
+      fiveDayImg
+        .eq(index)
+        .attr(
+          "src",
+          "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png"
+        );
+
+      // date.get(index).textContent = day.dt_txt;
+
       temp.get(index).textContent = day.main.temp;
-      // const humidityValue = humidity.get(index);
-      // console.log(humidityValue);
       humidity.get(index).textContent = day.main.humidity;
-      // humidity.get(index).textContent = day.main.humidity;
     });
   });
 }
