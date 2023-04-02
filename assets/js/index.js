@@ -96,8 +96,8 @@ function forecast(params) {
     let forecast = response.list.filter((item) =>
       item.dt_txt.includes("12:00")
     );
-    const fiveDayImg = $(".fiveDay-img");
     const date = $(".fiveDay-date");
+    const fiveDayImg = $(".fiveDay-img");
     const temp = $(".fiveDay-temp");
     const humidity = $(".fiveDay-humid");
     forecast.forEach((day, index) => {
@@ -107,9 +107,8 @@ function forecast(params) {
           "src",
           "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png"
         );
-
-      // date.get(index).textContent = day.dt_txt;
-
+      const dateText = new Date(day.dt_txt).toLocaleDateString();
+      date.eq(index).text(dateText);
       temp.get(index).textContent = day.main.temp;
       humidity.get(index).textContent = day.main.humidity;
     });
